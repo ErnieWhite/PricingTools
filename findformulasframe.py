@@ -184,8 +184,10 @@ class FindFormulaFrame(ttk.Frame):
         self.markup_var.set('')
         self.gross_profit_var.set('')
 
-    def on_invalid(self):
-        pass
+    @staticmethod
+    def on_invalid():
+        print('\a')
+
 
 
 if __name__ == '__main__':

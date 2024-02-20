@@ -99,18 +99,21 @@ class FindBasisValueFrame(ttk.Frame):
         if self.unit_price_var.get() == '' or self.formula_var.get() == '':
             self.clear_basis()
             return
-        multiplier = utility.calculate_multiplier(self.formula_var.get())
+        self.multiplier = utility.calculate_multiplier(self.formula_var.get())
+
         if self.multiplier == 0:
             self.clear_basis()
             return
-        basis = float(self.unit_price_var.get()) / multiplier
-        self.basis_price_var.set(f'{basis:.3}')
+        basis = float(self.unit_price_var.get()) / self.multiplier
+        print(basis)
+        self.basis_price_var.set(f'{basis:.3f}')
 
     def clear_basis(self):
         self.basis_price_var.set('')
 
-    def on_invalid(self):
-        pass
+    @staticmethod
+    def on_invalid():
+        print('\a')
 
     def copy_basis_price(self):
         pyperclip.copy(self.basis_price_var.get())

@@ -153,7 +153,7 @@ class ConvertFormula(ttk.Frame):
 
     @staticmethod
     def on_invalid() -> None:
-        beepy.beep(sound=1)
+        print('\a')
 
 
 if __name__ == '__main__':

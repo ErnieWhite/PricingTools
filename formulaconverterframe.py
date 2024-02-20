@@ -6,7 +6,6 @@ from tkinter import ttk
 import re
 import pyperclip
 
-import constants
 import utility
 from constants import *
 
@@ -16,11 +15,9 @@ class FormulaConverterFrame(ttk.Frame):
 
     """
     def __init__(self, container):
-        """
 
-        :param container:
-        """
         super().__init__(container)
+
         vcmd = (self.register(self.validate), '%P')
         ivcmd = (self.register(self.on_invalid),)
 
@@ -42,7 +39,7 @@ class FormulaConverterFrame(ttk.Frame):
             validatecommand=vcmd,
             invalidcommand=ivcmd,
         )
-        self.decimals_combo = ttk.Combobox(self, values=constants.DECIMALS_VALUES, textvariable=self.decimals_var)
+        self.decimals_combo = ttk.Combobox(self, values=DECIMALS_VALUES, textvariable=self.decimals_var)
         self.decimals_combo.set('Auto')
         self.decimals_combo.bind('<<ComboboxSelected>>', self.handle_formula_change_event)
 
@@ -134,6 +131,18 @@ class FormulaConverterFrame(ttk.Frame):
         else:
             self.clear_calculated_formulas()
 
+    def get_multiplier_formula(self) -> str:
+        return ""
+
+    def get_discount_formula(self) -> str:
+        return ""
+
+    def get_markup_formula(self) -> str:
+        return ""
+
+    def get_gross_profit_formula(self) -> str:
+        return ""
+
     def clear_calculated_formulas(self):
         self.multiplier_var.set('')
         self.discount_var.set('')
@@ -159,7 +168,7 @@ class FormulaConverterFrame(ttk.Frame):
 
     @staticmethod
     def on_invalid():
-        pass
+        print('\a')
 
 
 if __name__ == '__main__':
