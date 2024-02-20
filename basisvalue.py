@@ -2,7 +2,6 @@ import re
 import tkinter as tk
 from tkinter import ttk
 
-import beepy
 import pyperclip
 
 import utility

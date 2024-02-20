@@ -54,12 +54,12 @@ def find_markup_formula(multiplier, decimals):
 
 
 def find_discount_formula(multiplier, decimals):
-
+    print(multiplier)
     if decimals == 'Auto':
         return f'{(multiplier - 1)*100:+}'
     else:
         temp1 = (multiplier - 1)
-        temp2 = temp1 * 100
+        temp2 = temp1 * 100.0
         temp3 = int(decimals)
         temp4 = f'{temp2:+0.{temp3}f}'
         return f'{temp4}'
@@ -102,7 +102,8 @@ def valid_formula(formula):
 def smallestMultiplier(basis, unit):
     decimals = constants.MAX_DECIMALS
     while decimals >= 0:
-        multiplier = round(unit / basis, decimals)
+        gm = basis/unit
+        multiplier = round(1/(1-gm), decimals)
         if round(basis * multiplier, 3) != unit:
             break
         else:

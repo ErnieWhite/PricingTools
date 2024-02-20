@@ -140,10 +140,19 @@ class FindFormulaFrame(ttk.Frame):
 
         unit_price = float(self.unit_price_var.get())
         basis_value = float(self.basis_value_var.get())
-        if decimals == 'Auto':
-            multiplier = utility.smallestMultiplier(basis_value, unit_price)
-        else:
-            multiplier = unit_price / basis_value
+        # if decimals == 'Auto':
+        #     multiplier = utility.smallestMultiplier(basis_value, unit_price)
+        # else:
+        #     gm = 1-basis_value/unit_price
+        #     multiplier = 1 / (1-gm)
+        gm = 1-basis_value/unit_price
+        multiplier = 1 / (1-gm)
+        print("----------------")
+        print(f'Unit: {unit_price}')
+        print(f'Basis: {basis_value}')
+        print(f'GrossMargin: {1-basis_value/unit_price}')
+        print(f'Multipler: {1/(1-gm)}')
+        print("----------------")
 
         multiplier_formula = utility.find_multiplier_formula(multiplier,  decimals)
         discount_formula = utility.find_discount_formula(multiplier, decimals)
