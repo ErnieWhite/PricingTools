@@ -189,7 +189,6 @@ class FindFormulaFrame(ttk.Frame):
         print('\a')
 
 
-
 if __name__ == '__main__':
     app = tk.Tk()
 

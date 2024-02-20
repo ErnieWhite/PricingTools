@@ -76,30 +76,70 @@ def find_gross_profit_formula(multiplier, decimals):
 
 
 def valid_formula(formula):
+
     if formula is None:
         return False
+
     formula = formula.upper()
+
     if formula == '':
         return True
-    if formula[0] in ['*', 'X', 'D']:
-        try:
-            return True if float(formula[1:]) != 0 else False
-        except ValueError:
-            return False
+
+    if formula[0] in ['*', 'X']:
+        return validate_multiplier_formula(formula)
+
+    if formula[0] == 'D':
+        return validate_markup_formula(formula)
+
     if formula[0] in ['-', '+']:
-        try:
-            return True if float(formula[1:]) != 0 else False
-        except ValueError:
-            return False
+        validate_discount_formula(formula)
+
     if formula.startswith('GP'):
-        try:
-            return True if (float(formula[2:]) != 0) and (float(formula[2:]) < 100) else False
-        except ValueError:
-            return False
+        validate_gross_profit_formula(formula)
+
     return False
 
 
-def smallestMultiplier(basis, unit):
+def validate_multiplier_formula(formula) -> bool:
+    if not formula[0] in ['*', 'X']:
+        return False
+    try:
+        _ = float(formula[1:])
+    except ValueError:
+        return False
+    return True
+
+
+def validate_markup_formula(formula) -> bool:
+    if formula[0] != 'D':
+        return False
+    try:
+        _ = float(formula[1:])
+    except ValueError:
+        return False
+    return True
+
+
+def validate_discount_formula(formula) -> bool:
+    if not formula[0] in ['-', '+']:
+        return False
+    try:
+        _ = float(formula[1:])
+    except (ValueError, IndexError):
+        return False
+    return True
+
+
+def validate_gross_profit_formula(formula) -> bool:
+    if not formula.startswith('GP'):
+        return False
+    try:
+        return True if (float(formula[2:]) != 0) and (float(formula[2:]) < 100) else False
+    except ValueError:
+        return False
+
+
+def smallest_multiplier(basis, unit):
     decimals = constants.MAX_DECIMALS
     while decimals >= 0:
         gm = basis/unit

@@ -56,17 +56,18 @@ class FindBasisValueFrame(ttk.Frame):
         )
 
     def place_widgets(self):
-        ttk.Label(self, text=UNIT_PRICE).grid(row=0, column=0, sticky=tk.W)
-        self.unit_price_entry.grid(row=0, column=1, sticky=tk.EW)
+        padding = {'padx': 2, 'pady': 2}
+        ttk.Label(self, text=UNIT_PRICE).grid(row=0, column=0, sticky=tk.W, **padding)
+        self.unit_price_entry.grid(row=0, column=1, sticky=tk.EW, **padding)
 
-        ttk.Label(self, text=FORMULA).grid(row=1, column=0, sticky=tk.W)
-        self.formula_entry.grid(row=1, column=1, sticky=tk.EW)
+        ttk.Label(self, text=FORMULA).grid(row=1, column=0, sticky=tk.W, **padding)
+        self.formula_entry.grid(row=1, column=1, sticky=tk.EW, **padding)
 
         ttk.Separator(self, orient=tk.VERTICAL).grid(row=0, column=2, rowspan=3, padx=5, sticky=tk.NS)
 
-        ttk.Label(self, text=BASIS_VALUE).grid(row=0, column=4, sticky=tk.W)
-        self.calculated_basis_entry.grid(row=0, column=5, sticky=tk.EW)
-        self.copy_button.grid(row=0, column=6, sticky=tk.EW)
+        ttk.Label(self, text=BASIS_VALUE).grid(row=0, column=4, sticky=tk.W, **padding)
+        self.calculated_basis_entry.grid(row=0, column=5, sticky=tk.EW, **padding)
+        self.copy_button.grid(row=0, column=6, sticky=tk.EW, **padding)
 
     @staticmethod
     def validate_float(value):

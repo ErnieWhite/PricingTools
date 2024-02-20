@@ -48,7 +48,6 @@ class FormulaConverterFrame(ttk.Frame):
         self.markup_display = ttk.Entry(self, textvariable=self.markup_var, state='readonly')
         self.gross_profit_display = ttk.Entry(self, textvariable=self.gross_profit_var, state='readonly')
 
-
         # create the copy buttons
         self.multiplier_formula_button = ttk.Button(
             self,
