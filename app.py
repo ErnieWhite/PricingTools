@@ -64,10 +64,7 @@ class App(tk.Tk):
         self.title(APPLICATION_TITLE + " - " + FORMULA_CONVERTER)
 
 
-
-
 if __name__ == '__main__':
     app = App()
 
     app.mainloop()
-

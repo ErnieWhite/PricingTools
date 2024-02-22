@@ -147,7 +147,7 @@ class CalculateFormulas(ttk.Frame):
 
     @staticmethod
     def on_invalid():
-        beepy.beep(sound=1)
+        print('\a')
 
 
 if __name__ == '__main__':

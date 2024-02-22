@@ -151,7 +151,7 @@ class FindFormulaFrame(ttk.Frame):
         print(f'Unit: {unit_price}')
         print(f'Basis: {basis_value}')
         print(f'GrossMargin: {1-basis_value/unit_price}')
-        print(f'Multipler: {1/(1-gm)}')
+        print(f'Multiplier: {1/(1-gm)}')
         print("----------------")
 
         multiplier_formula = utility.find_multiplier_formula(multiplier,  decimals)

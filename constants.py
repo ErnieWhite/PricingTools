@@ -15,6 +15,4 @@ MARKUP = 'Markup'
 GROSS_PROFIT = 'Gross Profit'
 APPLICATION_TITLE = "Price Tool"
 MAX_DECIMALS = 6
-DECIMALS_VALUES = [str(x) for x in range(MAX_DECIMALS)]
-DECIMALS_VALUES.append('Auto')
-
+DECIMALS_VALUES = [str(x) for x in range(MAX_DECIMALS+1)]
